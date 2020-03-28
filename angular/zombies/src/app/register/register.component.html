@@ -1,0 +1,33 @@
+<div class="modal-body">
+    <div class="{{clase}}">
+        {{error}}
+    </div>
+    <div class="position-relative form-group">
+        <label for="nombre" class="">Nombre</label>
+        <input [(ngModel)]="nombre" name="nombre" id="nombre" placeholder="Nombre" type="text" class="form-control">
+    </div>
+    <div class="position-relative form-group">
+        <label for="useremail" class="">Email</label>
+        <input [(ngModel)]="useremail" name="useremail" id="useremail" placeholder="Email" type="email" class="form-control">
+    </div>
+    <div class="position-relative form-group">
+        <label for="picture" class="">Imagen de usuario</label>
+        <input [(ngModel)]="picture" name="picture" id="picture" placeholder="URL de su imagen de usuario" type="text" class="form-control">
+    </div>
+    <div class="position-relative form-group">
+        <label for="password" class="">Contraseña</label>
+        <input [(ngModel)]="contrasena" name="password" id="password" placeholder="Contraseña" type="password"
+            class="form-control">
+    </div>
+    <div class="position-relative form-group">
+        <label for="conpassword" class="">Confirmar Contraseña</label>
+        <input [(ngModel)]="concontrasena" name="conpassword" id="conpassword" placeholder="Confirmar contraseña"
+            type="password" class="form-control">
+    </div>
+    <div class="position-relative form-group">
+        <button type="button" (click)="registrar()" class="btn btn-primary" style="margin-right: 5px;">Registrarse</button>
+        <a href="/#/login">
+            <button type="button" class="btn btn-secondary">Iniciar sesion</button>
+        </a>
+    </div>
+</div>

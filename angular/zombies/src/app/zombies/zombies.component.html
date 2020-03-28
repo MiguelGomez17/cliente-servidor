@@ -1,0 +1,33 @@
+<div *ngIf="logeado" class="col-lg-12">
+    <div class="main-card mb-12 card">
+        <div class="card-body">
+            <h5 class="card-title">Lista de zombies</h5>
+            <table class="mb-0 table table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Tipo</th>
+                        <th>Email</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let zombie of zombies | async; let i = index">
+                        <td>{{i+1}}</td>
+                        <td>{{zombie.name}}</td>
+                        <td>{{zombie.type}}</td>
+                        <td>{{zombie.email}}</td>
+                        <td>
+                            <button (click)="actualizar(zombie._id, zombie.name, zombie.email)" class="btn mr-2 mb-2 btn-primary" data-toggle="modal" data-target="#UpdateZombiesModal">Actualizar</button>
+                            <button (click)="eliminar(zombie._id)" class="btn mr-2 mb-2 btn-primary">Borrar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <button type="button" class="btn mr-2 mb-2 btn-primary" data-toggle="modal" data-target="#ZombiesModal">
+                Agregar zombie
+            </button>
+        </div>
+    </div>
+</div>

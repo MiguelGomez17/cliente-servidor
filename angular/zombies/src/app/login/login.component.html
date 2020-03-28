@@ -1,0 +1,20 @@
+<div class="modal-body">
+    <div class="{{clase}}">
+        {{error}}
+    </div>
+    <div class="position-relative form-group">
+        <label for="useremail" class="">Email</label>
+        <input [(ngModel)]="useremail" name="useremail" id="useremail" placeholder="Email" type="email" class="form-control">
+    </div>
+    <div class="position-relative form-group">
+        <label for="password" class="">Contraseña</label>
+        <input [(ngModel)]="contrasena" name="password" id="password" placeholder="Contraseña" type="password"
+            class="form-control">
+    </div>
+    <div class="position-relative form-group">
+        <button type="button" (click)="ingresar()" class="btn btn-primary" style="margin-right: 5px;">Iniciar sesion</button>
+        <a href="/#/registro">
+            <button type="button" class="btn btn-secondary">Crear cuenta</button>
+        </a>
+    </div>
+</div>

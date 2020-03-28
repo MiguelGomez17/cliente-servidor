@@ -1,0 +1,30 @@
+<div class="app-page-title">
+    <div class="page-title-wrapper">
+        <div *ngIf="logeado" class="page-title-heading">
+            <div class="page-title-icon">
+                <i class="pe-7s-car icon-gradient bg-mean-fruit"></i>
+            </div>
+            <div>¡Bienvenido!
+                <div class="page-title-subheading">
+                    Aqui encontraras los zombies y cerebros registrados
+                </div>
+            </div>
+        </div>
+        <div *ngIf="!logeado" class="page-title-heading">
+            <div class="page-title-icon">
+                <i class="pe-7s-car icon-gradient bg-mean-fruit"></i>
+            </div>
+            <div>No has iniciado sesion
+                <div class="page-title-subheading">
+                    Registrate o inicia sesion en haciendo click en:<br>
+                    <a href="#/login">
+                        <button type="button" class="btn mr-2 mb-2 btn-primary">Iniciar sesion</button>
+                    </a>
+                    <a href="#/registro">
+                        <button type="button" class="btn mr-2 mb-2 btn-primary">Registrarse</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

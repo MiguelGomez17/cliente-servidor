@@ -1,0 +1,38 @@
+<div class="modal fade" id="CerebrosModal" #modal tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Agregar cerebro</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form #MyForm="ngForm" class="modal-body">
+                <div class="position-relative form-group">
+                    <label for="sabor" class="">Sabor</label>
+                    <input [(ngModel)]="sabor" name="sabor" id="sabor" placeholder="Sabor" type="text" class="form-control">
+                </div>
+                <div class="position-relative form-group">
+                    <label for="descripcion" class="">Descripcion</label>
+                    <input [(ngModel)]="descripcion" name="descripcion" id="descripcion" placeholder="Descripcion" type="text" class="form-control">
+                </div>
+                <div class="position-relative form-group">
+                    <label for="iq" class="">IQ</label>
+                    <input [(ngModel)]="iq" name="iq" id="iq" placeholder="IQ" type="number" class="form-control">
+                </div>
+                <div class="position-relative form-group">
+                    <label for="imagen" class="">Imagen</label>
+                    <input [(ngModel)]="imagen" name="imagen" id="imagen" placeholder="Imagen" type="text" class="form-control">
+                </div>
+            </form>
+            <div class="{{clase}}">
+                {{error}}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" #closebutton data-dismiss="modal">Cerrar</button>
+                <button type="button" (click)="guardarCerebros(MyForm)" class="btn btn-primary">Guardar cambios</button>
+            </div>
+        </div>
+    </div>
+</div>
