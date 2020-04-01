@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient} from '@angular/common/http';
+import { HttpClient, HttpParams} from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Subject } from 'rxjs';
 
@@ -60,22 +60,24 @@ export class DataService {
     return this.updateCerebros$.next(cerebros);
   }
 
-  agregarCerebro(sabor: string, descripcion: string, iq: string, imagen: string) {
+  agregarCerebro(sabor: string, descripcion: string, iq: string, imagen: string, usuario: string) {
     const nuevoCerebro = {
       flavor: sabor,
       description: descripcion,
       iq,
-      picture: imagen
+      picture: imagen,
+      usuario
     };
     return this._client.post(apiUrl + 'cerebros/nuevo', nuevoCerebro);
   }
 
-  actualizarCerebro(sabor: string, descripcion: string, iq: any, imagen: string, id: any) {
+  actualizarCerebro(sabor: string, descripcion: string, iq: any, imagen: string, usuario: string, id: any) {
     const Cerebro = {
       flavor: sabor,
       description: descripcion,
       iq,
-      picture: imagen
+      picture: imagen,
+      usuario
     };
     return this._client.put(`${apiUrl}cerebros/edit/${id}`, Cerebro);
   }
@@ -101,5 +103,11 @@ export class DataService {
       password: contraseña
     };
     return this._client.post(apiUrl + 'usuarios/login', usuario);
+  }
+  Usuario() {
+    return this._client.get(apiUrl + 'usuarios/username', {
+      observe: 'body',
+      params: new HttpParams().append('token', localStorage.getItem('resultado'))
+    });
   }
 }

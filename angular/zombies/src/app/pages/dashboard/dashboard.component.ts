@@ -8,12 +8,19 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private _dataService: DataService) { }
-
-  ngOnInit(): void {
-    if (!this._dataService.logeado) {
-      location.replace('/#/login');
+  constructor(private _dataService: DataService) {
+    if(localStorage.getItem('resultado')){
+      this._dataService.Usuario().subscribe(data => {
+        this.logeado = true;
+      },
+      error => {
+        this.logeado = false;
+      }
+    );
     }
   }
+  logeado: any;
+
+  ngOnInit(): void {}
 
 }

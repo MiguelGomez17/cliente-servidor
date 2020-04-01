@@ -8,25 +8,30 @@ import { DataService } from '../../services/data.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService) {
+    if(localStorage.getItem('resultado')){
+      this.dataService.Usuario().subscribe(data => {
+        let resultado = [];
+        // tslint:disable-next-line: forin
+        for (var i in data) {
+          resultado.push(i, data[i]);
+        }
+        this.dataService.logeado = true;
+        this.dataService.logedUser = resultado[1];
+        this.logeado = this.dataService.logeado;
+        this.data = this.dataService.logedUser;
+      },
+      error => {console.log(error)}
+    );
+    }
+  }
   logeado: any;
   data: any;
 
-  ngOnInit(): void {
-    if(localStorage.getItem('resultado')){
-      this.dataService.logeado = true;
-      this.dataService.logedUser = JSON.parse(localStorage.getItem('data'));
-      this.actualizado();
-    }
-  }
-  actualizado() {
-    this.logeado = this.dataService.logeado;
-    this.data = this.dataService.logedUser;
-    localStorage.removeItem('data');
-  }
+  ngOnInit(): void {}
+  
   logout(){
     localStorage.removeItem('resultado');
-    localStorage.removeItem('data');
     this.dataService.logeado = false;
     this.dataService.logedUser = null;
     location.reload();

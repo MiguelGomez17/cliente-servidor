@@ -69,13 +69,13 @@
                         <div class="widget-content-left">
                             <div class="btn-group">
                                 <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="p-0 btn">
-                                    <img width="42" class="rounded-circle" src="{{data[7]}}" alt="error">
+                                    <img width="42" class="rounded-circle" src="{{data.picture}}" alt="error">
                                     <i class="fa fa-angle-down ml-2 opacity-8"></i>
                                 </a>
                                 <div tabindex="-1" role="menu" aria-hidden="true"
                                     class="dropdown-menu dropdown-menu-right">
                                     <button (click)="logout()" type="button" tabindex="0" class="dropdown-item">Cerrar sesion</button>
-                                    <h6 tabindex="-1" class="dropdown-header">Usuario {{data[5]}}</h6>
+                                    <h6 tabindex="-1" class="dropdown-header">{{data.type}}</h6>
                                     <!--<button type="button" tabindex="0" class="dropdown-item">Settings</button>
                                     <h6 tabindex="-1" class="dropdown-header">Header</h6>
                                     <button type="button" tabindex="0" class="dropdown-item">Actions</button>
@@ -86,10 +86,10 @@
                         </div>
                         <div class="widget-content-left  ml-3 header-user-info">
                             <div class="widget-heading">
-                                {{data[1]}}
+                                {{data.name}}
                             </div>
                             <div class="widget-subheading">
-                                {{data[3]}}
+                                {{data.email}}
                             </div>
                         </div>
                         <div class="widget-content-right header-user-info ml-3">

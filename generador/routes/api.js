@@ -83,7 +83,8 @@ router.post('/cerebros/nuevo', function(req, res) {
     flavor: data.flavor,
     description: data.description,
     iq: data.iq,
-    picture: data.picture
+    picture: data.picture,
+    usuario: data.usuario
   });
 
   nuevoCerebro.save(function(error){
@@ -102,6 +103,7 @@ router.put('/cerebros/edit/:id', async function(req, res){
     cerebro.description = req.body.description;
     cerebro.iq = req.body.iq;
     cerebro.picture = req.body.picture;
+    cerebro.usuario = req.body.usuario;
 
     await cerebro.save(function(error){
       if(error){
@@ -165,14 +167,8 @@ router.post('/usuarios/login', function(req, res){
       if(user){
         bcrypt.compare(req.body.password,user.password).then(match => {
           if(match){
-            let token = jwt.sign(req.body.email,'MiguelGR');
-            let usuario = {
-              name: user.name,
-              email: user.email,
-              type: user.type,
-              picture: user.picture
-            };
-            res.status(200).json({token: token, user: usuario});
+            let token = jwt.sign({usuario: user},'MiguelGR',{expiresIn : '3h'});
+            res.status(200).json({token: token});
           }else{
             res.status(500).json({clase: 'alert alert-danger', mensaje: 'La contraseña es incorrecta'});
           }
@@ -189,5 +185,23 @@ router.post('/usuarios/login', function(req, res){
     res.status(500).json({clase: 'alert alert-danger', mensaje: error.message});
   }
 });
+
+router.get('/usuarios/username', verifyToken, function(req,res,next){
+  return res.status(200).json(decodedToken);
+});
+var decodedToken;
+function verifyToken(req,res,next){
+  let token = req.query.token;
+
+  jwt.verify(token,'MiguelGR', function(err, tokendata){
+    if(err){
+      return res.status(400).json({clase: 'alert alert-danger', mensaje:err});
+    }
+    if(tokendata){
+      decodedToken = tokendata;
+      next();
+    }
+  });
+}
 
 module.exports=router;

@@ -9,20 +9,18 @@ import { DataService } from '../services/data.service';
 export class CerebrosComponent implements OnInit {
 
   // tslint:disable-next-line: variable-name
-  constructor(private _dataService: DataService) { }
+  constructor(public _dataService: DataService) { }
 
   cerebros: any;
   logeado = this._dataService.logeado;
 
   ngOnInit(): void {
-    if (!this._dataService.logeado) {
-      location.replace('/#/login');
-    }
     if(localStorage.getItem('resultado')){
       this._dataService.logeado = true;
-      this._dataService.logedUser = localStorage.getItem('data');
+      this.actualizarTabla();
+    }else{
+      location.replace('/#/login');
     }
-    this.actualizarTabla();
   }
   eliminar(id) {
     this._dataService.eliminarCerebro(id).subscribe((resultado) => {

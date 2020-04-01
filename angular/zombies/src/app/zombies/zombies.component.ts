@@ -15,14 +15,12 @@ export class ZombiesComponent implements OnInit {
   logeado = this._dataService.logeado;
 
   ngOnInit(): void {
-    if (!this._dataService.logeado) {
-      location.replace('/#/login');
-    }
     if(localStorage.getItem('resultado')){
       this._dataService.logeado = true;
-      this._dataService.logedUser = localStorage.getItem('data');
+      this.actualizarTabla();
+    }else{
+      location.replace('/#/login');
     }
-    this.actualizarTabla();
   }
   eliminar(id) {
     this._dataService.eliminarZombie(id).subscribe((resultado) => {

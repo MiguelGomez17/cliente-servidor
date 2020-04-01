@@ -20,6 +20,10 @@ var modelSchema= mongoose.Schema({
     picture: {
         type: String,
         required: [true, 'La foto es obligatoria']
+    },
+    usuario: {
+        type: String,
+        required: [true, 'No se selecciono el usuario']
     }
 });
 

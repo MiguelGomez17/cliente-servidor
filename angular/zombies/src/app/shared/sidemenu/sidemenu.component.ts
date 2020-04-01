@@ -8,11 +8,19 @@ import { DataService } from '../../services/data.service';
 })
 export class SidemenuComponent implements OnInit {
 
-  constructor(private dataService: DataService) { }
-  logeado = this.dataService.logeado;
-
-  ngOnInit(): void {
-    this.logeado = this.dataService.logeado;
+  constructor(private dataService: DataService) {
+    if(localStorage.getItem('resultado')){
+      this.dataService.Usuario().subscribe(data => {
+        this.logeado = true;
+      },
+      error => {
+        this.logeado = false;
+      }
+    );
+    }
   }
+  logeado: any;
+
+  ngOnInit(): void {}
 
 }

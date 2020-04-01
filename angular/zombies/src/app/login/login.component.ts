@@ -25,19 +25,13 @@ export class LoginComponent implements OnInit {
       this.clase = '';
       this.error = '';
       this.dataService.logeado = true;
+      console.log(resultado);
       var result = [];
       // tslint:disable-next-line: forin
       for (var i in resultado) {
         result.push(i, resultado[i]);
       }
-      var datos = result[3];
-      var data = []
-      // tslint:disable-next-line: forin
-      for (var i in datos) {
-        data.push(i, datos[i]);
-      }
       localStorage.setItem('resultado', result[1]);
-      localStorage.setItem('data', JSON.stringify(data));
       location.reload();
     }, (error) => {
       this.clase = error.error.clase;
