@@ -20,8 +20,8 @@ var modelSchema= mongoose.Schema({
     },
     type: {
         type: String,
-        defaul: "Regular",
-        enum: ["Regular","Administrador"],
+        defaul: "Usuario",
+        enum: ["Usuario","Administrador"],
         required: true
     },
     picture: {

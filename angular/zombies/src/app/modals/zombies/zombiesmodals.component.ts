@@ -25,7 +25,7 @@ export class ZombiesModalsComponent implements OnInit {
   }
 
   guardarZombies(form: NgForm) {
-    this.dataService.agregarZombie(this.nombre, this.email, this.tipo).subscribe((resultado) => {
+    this.dataService.agregarZombie(this.nombre, this.email, this.tipo, this.dataService.logedUser._id).subscribe((resultado) => {
       this.dataService.obtenerZombies();
       this.clase = '';
       this.error = '';

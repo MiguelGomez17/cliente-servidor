@@ -15,6 +15,10 @@ var modelSchema= mongoose.Schema({
         type: String,
         enum: ["Alumno zombie","Profesor"],
         required: [true,"Seleccione un tipo de zombie valido"]
+    },
+    usuario: {
+        type: String,
+        required: [true, 'No se selecciono el usuario']
     }
 });
 

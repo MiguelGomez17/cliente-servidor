@@ -8,7 +8,7 @@ import { DataService } from '../../services/data.service';
 })
 export class SidemenuComponent implements OnInit {
 
-  constructor(private dataService: DataService) {
+  constructor(public dataService: DataService) {
     if(localStorage.getItem('resultado')){
       this.dataService.Usuario().subscribe(data => {
         this.logeado = true;

@@ -16,37 +16,40 @@ export class DataService {
   private updateCerebros$ = new Subject<any>();
   cerebrosObservable = this.updateCerebros$.asObservable();
   id: any;
-  name: any;
-  email: any;
   flavor: any;
   iq: any;
   description: any;
   picture: any;
-  logeado: boolean;
+  logeado = false;
   logedUser: any;
+  zombie = ['id', 'Nombre', 'Email', 'usuario'];
+  cerebro = ['id', 'Sabor', 'IQ', 'Descripcion', 'Imagen', 'usuario'];
 
   // tslint:disable-next-line: variable-name
   constructor(private _client: HttpClient) { }
 
   async obtenerZombies() {
     const zombies = await this._client.get<any>(apiUrl + 'zombies');
-    return this.updateZombies$.next(zombies);
+    this.updateZombies$.next(zombies);
+    return zombies;
   }
 
-  agregarZombie(nombre: string, email: string, tipo: string) {
+  agregarZombie(nombre: string, email: string, tipo: string, usuario: string) {
     const nuevoZombie = {
       name: nombre,
       email,
-      type: tipo
+      type: tipo,
+      usuario
     };
 
     return this._client.post(apiUrl + 'zombies/nuevo', nuevoZombie);
   }
-  actualizarZombie(nombre: string, email: string, tipo: string, id: string) {
+  actualizarZombie(nombre: string, email: string, tipo: string, usuario: string, id: string) {
     const Zombie = {
       name: nombre,
       email,
-      type: tipo
+      type: tipo,
+      usuario
     };
     return this._client.put(`${apiUrl}zombies/edit/${id}`, Zombie);
   }

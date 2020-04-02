@@ -15,8 +15,12 @@ export class DashboardComponent implements OnInit {
       },
       error => {
         this.logeado = false;
+        localStorage.removeItem('resultado');
+        location.reload();
       }
     );
+    } else {
+      location.replace('/#/login');
     }
   }
   logeado: any;

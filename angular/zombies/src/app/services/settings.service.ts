@@ -30,12 +30,10 @@ export class SettingsService implements OnInit {
   }
 
   guardarAjustes() {
-    console.log('Guardado en localStorage');
     localStorage.setItem('ajustes', JSON.stringify(this.ajustes));
   }
 
   aplicar() {
-    console.log('aplicando...');
     this._document.
       getElementsByClassName('app-header')[0].setAttribute('class', 'app-header header-shadow ' + this.ajustes.temaEncabezado);
     this._document.

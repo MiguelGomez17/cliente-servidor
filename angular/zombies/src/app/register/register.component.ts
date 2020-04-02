@@ -8,7 +8,13 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private dataService: DataService) { }
+  constructor(public dataService: DataService) {
+    if (this.dataService.logeado) {
+      if (!(this.dataService.logedUser.type === 'Administrador')) {
+        location.replace('/#');
+      }
+    }
+  }
   nombre: string;
   useremail: string;
   contrasena: string;
@@ -18,13 +24,12 @@ export class RegisterComponent implements OnInit {
   error: string;
   clase: string;
 
-  ngOnInit(): void {
-    if (this.dataService.logeado) {
-      location.replace('/#');
-    }
-  }
+  ngOnInit(): void {}
   registrar() {
     if (this.concontrasena === this.contrasena) {
+      if (this.tipo == null) {
+        this.tipo = 'Usuario';
+      }
       this.dataService.registrarUsuario(this.nombre, this.useremail, this.contrasena, this.tipo, this.picture).subscribe((resultado) => {
         this.clase = 'alert alert-success';
         this.error = 'Usuario registrado';

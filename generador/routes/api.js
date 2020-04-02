@@ -22,7 +22,8 @@ router.post('/zombies/nuevo', function(req, res) {
   let nuevoZombie = new Zombie({
     name: data.name,
     email: data.email,
-    type: data.type
+    type: data.type,
+    usuario: data.usuario
   });
   nuevoZombie.save(function(error){
     if(error){
@@ -39,7 +40,7 @@ router.put('/zombies/edit/:id', async function(req, res){
     zombie.name = req.body.name;
     zombie.email = req.body.email;
     zombie.type = req.body.type;
-    
+    zombie.usuario = zombie.usuario;
     await zombie.save(function (error){
       if(error){
         res.status(500).json({clase: 'alert alert-danger', mensaje: error.message});
@@ -103,7 +104,7 @@ router.put('/cerebros/edit/:id', async function(req, res){
     cerebro.description = req.body.description;
     cerebro.iq = req.body.iq;
     cerebro.picture = req.body.picture;
-    cerebro.usuario = req.body.usuario;
+    cerebro.usuario = cerebro.usuario;
 
     await cerebro.save(function(error){
       if(error){
@@ -149,7 +150,7 @@ router.post('/usuarios/nuevo', function(req, res) {
     name: data.name,
     email: data.email,
     password: data.password,
-    type: 'Regular',
+    type: data.type,
     picture: data.picture
   });
   nuevoUsuario.save(function(error){

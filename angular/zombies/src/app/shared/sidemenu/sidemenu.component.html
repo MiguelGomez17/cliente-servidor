@@ -62,6 +62,20 @@
                         </li>
                     </ul>
                 </li>
+                <li *ngIf='this.dataService.logedUser.type === "Administrador"'>
+                    <a href="#">
+                        <i class="metismenu-icon fas fa-user"></i>
+                        Usuarios
+                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="#/registro">
+                                <i class="metismenu-icon"></i>Nuevo Usuario
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>

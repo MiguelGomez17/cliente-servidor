@@ -11,11 +11,11 @@
             <form #myForm="ngForm" class="modal-body">
                 <div class="position-relative form-group">
                     <label for="nombre" class="">Nombre</label>
-                    <input [(ngModel)]="nombre" name="nombre" id="nombre" placeholder="Nombre" type="text" value="" class="form-control">
+                    <input [(ngModel)]="nombre" name="nombre" id="nombre" placeholder="{{this.dataService.zombie[1]}}" type="text" value="" class="form-control">
                 </div>
                 <div class="position-relative form-group">
                     <label for="email" class="">Email</label>
-                    <input [(ngModel)]="email" name="email" id="email" placeholder="Email" type="email" value="" class="form-control">
+                    <input [(ngModel)]="email" name="email" id="email" placeholder="{{this.dataService.zombie[2]}}" type="email" value="" class="form-control">
                 </div>
                 <div class="position-relative form-group">
                     <label for="tipo" class="">Tipo</label>

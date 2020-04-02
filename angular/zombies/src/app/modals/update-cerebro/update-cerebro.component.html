@@ -11,15 +11,15 @@
             <form #MyForm="ngForm" class="modal-body">
                 <div class="position-relative form-group">
                     <label for="sabor" class="">Sabor</label>
-                    <input [(ngModel)]="sabor" name="sabor" id="sabor" placeholder="Sabor" type="text" class="form-control">
+                    <input [(ngModel)]="sabor" name="sabor" id="sabor" placeholder="{{this.dataService.cerebro[1]}}" type="text" class="form-control">
                 </div>
                 <div class="position-relative form-group">
                     <label for="descripcion" class="">Descripcion</label>
-                    <input [(ngModel)]="descripcion" name="descripcion" id="descripcion" placeholder="Descripcion" type="text" class="form-control">
+                    <input [(ngModel)]="descripcion" name="descripcion" id="descripcion" placeholder="{{this.dataService.cerebro[3]}}" type="text" class="form-control">
                 </div>
                 <div class="position-relative form-group">
                     <label for="iq" class="">IQ</label>
-                    <input [(ngModel)]="iq" name="iq" id="iq" placeholder="IQ" type="number" class="form-control">
+                    <input [(ngModel)]="iq" name="iq" id="iq" placeholder="{{this.dataService.cerebro[2]}}" type="number" class="form-control">
                 </div>
                 <div class="position-relative form-group">
                     <label for="imagen" class="">Imagen</label>

@@ -9,32 +9,30 @@ import { DataService } from '../services/data.service';
 export class ZombiesComponent implements OnInit {
 
   // tslint:disable-next-line: variable-name
-  constructor(private _dataService: DataService) { }
-
-  zombies: any;
-  logeado = this._dataService.logeado;
-
-  ngOnInit(): void {
-    if(localStorage.getItem('resultado')){
+  constructor(public _dataService: DataService) {
+    this.actualizarTabla();
+    if (localStorage.getItem('resultado')) {
       this._dataService.logeado = true;
-      this.actualizarTabla();
-    }else{
+    } else {
       location.replace('/#/login');
     }
   }
+
+  zombies: any;
+  logeado = this._dataService.logeado;
+  public zombie: any;
+
+  ngOnInit(): void {}
+
   eliminar(id) {
     this._dataService.eliminarZombie(id).subscribe((resultado) => {
       this.actualizarTabla();
     });
   }
 
-  actualizar(id, name, email) {
-    var data = [id, name, email];
-    localStorage.setItem('Zombiedata', JSON.stringify(data));
-    this._dataService.id = id;
-    this._dataService.name = name;
-    this._dataService.email = email;
-    console.log(this._dataService.id, this._dataService.name = name, this._dataService.email = email);
+  actualizar(id, name, email, usuario) {
+    var data = [id, name, email, usuario];
+    this._dataService.zombie = data;
   }
 
   actualizarTabla() {
@@ -44,4 +42,15 @@ export class ZombiesComponent implements OnInit {
     });
     this._dataService.obtenerZombies();
   }
+
+  usuariovalido(zombie) {
+    if (zombie.usuario == this._dataService.logedUser._id) {
+      return true;
+    } else if (this._dataService.logedUser.type == 'Administrador') {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
 }

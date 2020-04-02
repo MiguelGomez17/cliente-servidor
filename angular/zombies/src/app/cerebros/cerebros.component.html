@@ -14,12 +14,12 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let cerebro of cerebros | async" >
-                        <td *ngIf="cerebro.usuario == _dataService.logedUser._id">{{cerebro.flavor}}</td>
-                        <td *ngIf="cerebro.usuario == _dataService.logedUser._id">{{cerebro.iq}}</td>
-                        <td *ngIf="cerebro.usuario == _dataService.logedUser._id">{{cerebro.description}}</td>
-                        <td *ngIf="cerebro.usuario == _dataService.logedUser._id"><img src="{{cerebro.picture}}" alt="Error al cargar" width="70px" height="auto"></td>
-                        <td *ngIf="cerebro.usuario == _dataService.logedUser._id">
-                            <button (click)="actualizar(cerebro._id, cerebro.flavor, cerebro.iq, cerebro.description, cerebro.picture)" class="btn mr-2 mb-2 btn-primary" data-toggle="modal" data-target="#UpdateCerebrosModal">Actualizar</button>
+                        <td *ngIf="usuariovalido(cerebro)">{{cerebro.flavor}}</td>
+                        <td *ngIf="usuariovalido(cerebro)">{{cerebro.iq}}</td>
+                        <td *ngIf="usuariovalido(cerebro)">{{cerebro.description}}</td>
+                        <td *ngIf="usuariovalido(cerebro)"><img src="{{cerebro.picture}}" alt="Error al cargar" width="70px" height="auto"></td>
+                        <td *ngIf="usuariovalido(cerebro)">
+                            <button (click)="actualizar(cerebro._id, cerebro.flavor, cerebro.iq, cerebro.description, cerebro.picture, cerebro.usuario)" class="btn mr-2 mb-2 btn-primary" data-toggle="modal" data-target="#UpdateCerebrosModal">Actualizar</button>
                             <button (click)="eliminar(cerebro._id)" class="btn mr-2 mb-2 btn-primary">Borrar</button>
                         </td>
                     </tr>

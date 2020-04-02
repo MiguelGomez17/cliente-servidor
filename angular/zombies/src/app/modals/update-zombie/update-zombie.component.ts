@@ -17,15 +17,14 @@ export class UpdateZombieComponent implements OnInit {
   zombies: any;
   error: string;
   clase: string;
-
   // tslint:disable-next-line: variable-name
   constructor(public dataService: DataService, private _renderer: Renderer2) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   actualizarZombie(form: NgForm) {
-    this.dataService.actualizarZombie(this.nombre, this.email, this.tipo, this.dataService.id).subscribe((resultado) => {
+    this.dataService.actualizarZombie(this.nombre, this.email, this.tipo,
+    this.dataService.logedUser._id, this.dataService.zombie[0]).subscribe((resultado) => {
       this.dataService.obtenerZombies();
       this.clase = '';
       this.error = '';

@@ -24,9 +24,16 @@
         <input [(ngModel)]="concontrasena" name="conpassword" id="conpassword" placeholder="Confirmar contraseña"
             type="password" class="form-control">
     </div>
+    <div *ngIf='this.dataService.logeado' class="position-relative form-group">
+        <label for="tipo" class="">Tipo</label>
+        <select [(ngModel)]="tipo" name="select" id="tipo" class="form-control">
+            <option>Usuario</option>
+            <option>Administrador</option>
+        </select>
+    </div>
     <div class="position-relative form-group">
-        <button type="button" (click)="registrar()" class="btn btn-primary" style="margin-right: 5px;">Registrarse</button>
-        <a href="/#/login">
+        <button type="button" (click)="registrar()" class="btn btn-primary" style="margin-right: 5px;">Registrar</button>
+        <a *ngIf="!this.dataService.logeado" href="/#/login">
             <button type="button" class="btn btn-secondary">Iniciar sesion</button>
         </a>
     </div>

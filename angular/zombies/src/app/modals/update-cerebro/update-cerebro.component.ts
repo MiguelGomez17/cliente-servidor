@@ -26,7 +26,7 @@ export class UpdateCerebroComponent implements OnInit {
 
   actualizarCerebros(form: NgForm) {
     this.dataService.actualizarCerebro(this.sabor, this.descripcion, this.iq, this.imagen,
-    this.dataService.logedUser._id, this.dataService.id).subscribe((resultado) => {
+    this.dataService.logedUser._id, this.dataService.cerebro[0]).subscribe((resultado) => {
       this.dataService.obtenerCerebros();
       this.clase = '';
       this.error = '';
