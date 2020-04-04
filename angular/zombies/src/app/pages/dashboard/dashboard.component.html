@@ -1,1 +1,11 @@
-<p>dashboard works!</p>
+<div *ngFor="let cerebro of cerebros | async"><div>{{registro(cerebro)}}</div></div>
+<div class="card-body"><h5 class="card-title">Graficas de cerebros</h5>
+    <div class="card-subtitle">Cerebros por sabor</div>
+    <div *ngFor="let cerebro of cerebros | async" class="mb-3 progress" style="height: 20px;">
+        <div class="progress-bar progress-bar-animated progress-bar-striped" role="progressbar" [ngStyle]="{'width': porcentajesabor(cerebro.flavor)}" style="border-style: solid; font-size: 15px;">{{cerebro.flavor}}</div><br>
+    </div>
+    <div class="card-subtitle">Cerebros usuario</div>
+    <div *ngFor="let cerebro of cerebros | async" class="mb-3 progress" style="height: 20px;">
+        <div class="progress-bar progress-bar-animated progress-bar-striped" role="progressbar" [ngStyle]="{'width': porcentajeusuario(cerebro.usuario)}" style="border-style: solid; font-size: 15px;">{{cerebro.usuario}}</div><br>
+    </div>
+</div>
