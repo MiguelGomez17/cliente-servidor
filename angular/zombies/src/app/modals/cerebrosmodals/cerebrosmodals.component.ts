@@ -27,7 +27,7 @@ export class CerebrosmodalsComponent implements OnInit {
   guardarCerebros(form: NgForm) {
     console.log(this.sabor, this.descripcion, this.iq, this.imagen);
     this.dataService.agregarCerebro(this.sabor, this.descripcion, this.iq, this.imagen,
-    this.dataService.logedUser._id).subscribe((resultado) => {
+    this.dataService.logedUser.email).subscribe((resultado) => {
       this.dataService.obtenerCerebros();
       this.clase = '';
       this.error = '';

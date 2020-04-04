@@ -42,7 +42,7 @@ export class CerebrosComponent implements OnInit {
   }
 
   usuariovalido(cerebro) {
-    if (cerebro.usuario == this._dataService.logedUser._id) {
+    if (cerebro.usuario == this._dataService.logedUser.email) {
       return true;
     } else if (this._dataService.logedUser.type == 'Administrador') {
       return true;

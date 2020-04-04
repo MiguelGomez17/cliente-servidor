@@ -7,7 +7,6 @@ import { SettingsService } from 'src/app/services/settings.service';
   styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit {
-
   // tslint:disable-next-line: variable-name
   constructor(public _ajustes: SettingsService) { }
 

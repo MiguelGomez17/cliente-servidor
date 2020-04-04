@@ -44,7 +44,7 @@ export class ZombiesComponent implements OnInit {
   }
 
   usuariovalido(zombie) {
-    if (zombie.usuario == this._dataService.logedUser._id) {
+    if (zombie.usuario == this._dataService.logedUser.email) {
       return true;
     } else if (this._dataService.logedUser.type == 'Administrador') {
       return true;

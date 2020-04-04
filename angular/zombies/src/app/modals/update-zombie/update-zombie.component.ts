@@ -24,7 +24,7 @@ export class UpdateZombieComponent implements OnInit {
 
   actualizarZombie(form: NgForm) {
     this.dataService.actualizarZombie(this.nombre, this.email, this.tipo,
-    this.dataService.logedUser._id, this.dataService.zombie[0]).subscribe((resultado) => {
+    this.dataService.logedUser.email, this.dataService.zombie[0]).subscribe((resultado) => {
       this.dataService.obtenerZombies();
       this.clase = '';
       this.error = '';

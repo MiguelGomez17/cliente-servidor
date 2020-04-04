@@ -34,10 +34,7 @@ export class SettingsService implements OnInit {
   }
 
   aplicar() {
-    debugger
-    this._document.
-      getElementsByClassName('app-header')[0].setAttribute('class', 'app-header header-shadow ' + this.ajustes.temaEncabezado);
-    this._document.
-      getElementsByClassName('app-sidebar')[0].setAttribute('class', 'app-sidebar sidebar-shadow ' + this.ajustes.temaLateral);
+    this._document.getElementsByClassName('app-header')[0].setAttribute('class', 'app-header header-shadow ' + this.ajustes.temaEncabezado);
+    this._document.getElementsByClassName('app-sidebar')[0].setAttribute('class', 'app-sidebar sidebar-shadow ' + this.ajustes.temaLateral);
   }
 }
