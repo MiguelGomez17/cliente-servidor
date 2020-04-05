@@ -7,7 +7,8 @@ import { DOCUMENT } from '@angular/common';
 export class SettingsService implements OnInit {
 
   // tslint:disable-next-line: variable-name
-  constructor(@Inject(DOCUMENT) private _document) { }
+  constructor(@Inject(DOCUMENT) private _document) {
+  }
 
   ajustes = {
     temaEncabezado: '',
@@ -23,10 +24,10 @@ export class SettingsService implements OnInit {
     if (localStorage.getItem('ajustes')) {
       this.ajustes = JSON.parse(localStorage.getItem('ajustes'));
       console.log('Cargando ajustes...');
+      this.aplicar();
     } else {
       console.log('Se cargaron ajustes por defecto.');
     }
-    this.aplicar();
   }
 
   guardarAjustes() {

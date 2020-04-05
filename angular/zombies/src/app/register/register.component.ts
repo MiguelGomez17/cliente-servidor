@@ -30,7 +30,8 @@ export class RegisterComponent implements OnInit {
       if (this.tipo == null) {
         this.tipo = 'Usuario';
       }
-      this.dataService.registrarUsuario(this.nombre, this.useremail, this.contrasena, this.tipo, this.picture).subscribe((resultado) => {
+      this.dataService.registrarUsuario(this.nombre, this.useremail, this.contrasena,
+      this.tipo, this.picture).subscribe((resultado) => {
         this.clase = 'alert alert-success';
         this.error = 'Usuario registrado';
         location.replace('/#/login');
